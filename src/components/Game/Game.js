@@ -77,30 +77,38 @@ const PokemonGame = ({ pokemon }) => {
 	}
 
 	return (
-		<section>
-			<div>
-				<h2>{currentPokemon.name}</h2>
-				<span>
-					{currentPokemon.type} | {currentPokemon.score}
-				</span>
+		<section className="=pokemon">
+			<div className="pokemon__player">
+				<h2 className="pokemon__name">{currentPokemon.name}</h2>
 				<img
+					className="pokemon__img"
 					src={
 						process.env.PUBLIC_URL + "/" + "image" + "/" + currentPokemon.image
 					}
 				/>
-			</div>
-			<div>
-				<h2>{currentPokemon2.name}</h2>
-				<span>
-					{currentPokemon2.type} | {currentPokemon2.score}
+				<span className="pokemon__score">
+					{currentPokemon.type} | {currentPokemon.score}
 				</span>
+				<h3 className="pokemon__info">{currentPokemon.power.title}</h3>
+				<p className="pokemon__info">{currentPokemon.power.content}</p>
+			</div>
+			<div className="pokemon__player">
+				<h2 className="pokemon__name">{currentPokemon2.name}</h2>
 				<img
+					className="pokemon__img"
 					src={
 						process.env.PUBLIC_URL + "/" + "image" + "/" + currentPokemon2.image
 					}
 				/>
+				<span className="pokemon__info">
+					{currentPokemon2.type} | {currentPokemon2.score}
+				</span>
+				<h3 className="pokemon__info">{currentPokemon2.power.title}</h3>
+				<p className="pokemon__info">{currentPokemon2.power.content}</p>
 			</div>
-			<button onClick={ClickHandler}>PLAY GAME</button>
+			<button className="pokemon__btn" onClick={ClickHandler}>
+				PLAY GAME
+			</button>
 		</section>
 	);
 };
