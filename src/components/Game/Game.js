@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "./Game.scss";
 
 const PokemonGame = ({ pokemon }) => {
 	const [currentPokemon, setCurrentPokemon] = useState(null);
