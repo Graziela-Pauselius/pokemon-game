@@ -27,9 +27,6 @@ const App = () => {
 	return (
 		<div>
 			<Game pokemon={pokemon} />
-			<img
-				src={process.env.PUBLIC_URL + "/" + "image" + "/" + pokemon[0].image}
-			/>
 		</div>
 	);
 };
