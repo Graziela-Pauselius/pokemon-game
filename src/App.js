@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+import Game from "./components/Game/Game";
+
 const App = () => {
 	const [pokemon, setPokemon] = useState(null);
 	useEffect(() => {
@@ -18,14 +20,17 @@ const App = () => {
 		getPokemon();
 	}, []);
 
-	if (pokemon === null) {
-		return <h1>Loding...</h1>;
+	if (pokemon === null || pokemon === undefined) {
+		return <h1>Loading...</h1>;
 	}
 
 	return (
-		<img
-			src={process.env.PUBLIC_URL + "/" + "image" + "/" + pokemon[0].image}
-		/>
+		<div>
+			<Game pokemon={pokemon} />
+			<img
+				src={process.env.PUBLIC_URL + "/" + "image" + "/" + pokemon[0].image}
+			/>
+		</div>
 	);
 };
 
