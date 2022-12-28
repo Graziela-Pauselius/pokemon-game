@@ -5,13 +5,14 @@ import Game from "./components/Game/Game";
 
 const App = () => {
 	const [pokemon, setPokemon] = useState(null);
+
 	useEffect(() => {
+		// Get all pokemon data
 		const getPokemon = async () => {
 			try {
 				const response = await axios.get(`http://localhost:3000/pokemon`);
-				// console.log(response.data.pokemonData);
 				const pokemonData = await response.data.pokemonData;
-				console.log(pokemonData);
+				// console.log("data", pokemonData);
 				setPokemon(pokemonData);
 			} catch (error) {
 				console.log(error);

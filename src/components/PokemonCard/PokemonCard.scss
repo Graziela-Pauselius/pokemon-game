@@ -1,140 +1,91 @@
-*,
-*::before,
-*::after {
-	box-sizing: border-box;
+a {
+	cursor: pointer;
+	transition: all 200ms linear;
 }
-
-html,
-body {
-	margin: 0;
+a:hover {
+	text-decoration: none;
 }
-
-/* Animation */
-@keyframes blink {
-	from {
-		background: #eee;
-	}
-	to {
-		background: #e74c3c;
-	}
+.link {
+	color: #c4c3ca;
 }
-@keyframes shake {
-	0% {
-		transform: translate(0, 0) rotate(0);
-	}
-	20% {
-		transform: translate(-10px, 0) rotate(-20deg);
-	}
-	30% {
-		transform: translate(10px, 0) rotate(20deg);
-	}
-	50% {
-		transform: translate(-10px, 0) rotate(-10deg);
-	}
-	60% {
-		transform: translate(10px, 0) rotate(10deg);
-	}
-	100% {
-		transform: translate(0, 0) rotate(0);
-	}
+.link:hover {
+	color: #ffeba7;
 }
-@keyframes fall {
-	0% {
-		top: -200px;
-	}
-	60% {
-		top: 0;
-	}
-	80% {
-		top: -20px;
-	}
-	100% {
-		top: 0;
-	}
+.over-hide {
+	overflow: hidden;
 }
-
-.pokemon {
-	background-image: url("../../img/background.jpg");
-	background-size: cover;
-	background-repeat: no-repeat;
-	width: 100vw;
-
-	&__cards-section {
-		min-height: 100vh;
-	}
-
-	&__cards {
-		display: flex;
-		align-items: center;
-		justify-content: space-evenly;
-	}
-
-	&__header {
-		width: 30rem;
-		padding-top: 5rem;
-
-		&-container {
-			display: flex;
-			justify-content: center;
-		}
-	}
-
-	//POKEBALL
-	&__pokeball {
-		position: relative;
-		width: 200px;
-		height: 200px;
-		background: #fff;
-		border: 10px solid #000;
-		border-radius: 50%;
-		overflow: hidden;
-		box-shadow: inset -10px 10px 0 10px #ccc;
-		animation: fall 0.25s ease-in-out,
-			shake 1.25s cubic-bezier(0.36, 0.07, 0.19, 0.97) 3;
-	}
-	&__pokeball::before,
-	&__pokeball::after {
-		content: "";
-		position: absolute;
-	}
-	&__pokeball::before {
-		background: red;
-		width: 100%;
-		height: 50%;
-	}
-	&__pokeball::after {
-		top: calc(50% - 10px);
-		width: 100%;
-		height: 20px;
-		background: #000;
-	}
-
-	&__pokeball-btn {
-		position: absolute;
-		top: calc(50% - 30px);
-		left: calc(50% - 30px);
-		width: 60px;
-		height: 60px;
-		background: #7f8c8d;
-		border: 10px solid #fff;
-		border-radius: 50%;
-		z-index: 10;
-		box-shadow: 0 0 0 10px black;
-		animation: blink 0.9s alternate 7;
-		cursor: pointer;
-	}
-	//popup
-
-	&__popup-img {
-		animation: fall 0.25s ease,
-			shake 5.25s cubic-bezier(0.36, 0.07, 0.19, 0.97) 3;
-	}
-
-	&__popup-winner {
-		color: white;
-		font-size: 2.3rem;
-		margin: 2rem 0;
-	}
+.size-22 {
+	font-size: 22px;
+}
+.section {
+	position: relative;
+	width: 100%;
+	z-index: 1;
+	display: block;
+}
+.full-height {
+	min-height: 100vh;
+}
+[type="checkbox"]:checked,
+[type="checkbox"]:not(:checked) {
+	position: absolute;
+	left: -9999px;
+}
+.pricing:checked + label,
+.pricing:not(:checked) + label {
+	position: relative;
+	display: block;
+	text-align: center;
+	width: 260px;
+	height: 44px;
+	border-radius: 4px;
+	padding: 0;
+	margin: 0 auto;
+	cursor: pointer;
+	font-family: "Poppins", sans-serif;
+	font-weight: 600;
+	text-transform: uppercase;
+	font-size: 14px;
+	letter-spacing: 1px;
+	line-height: 44px;
+	padding: 0 25px;
+	padding-right: 27px;
+	overflow: hidden;
+	color: #fff;
+	text-align: left;
+}
+.pricing:checked + label:before,
+.pricing:not(:checked) + label:before {
+	position: absolute;
+	content: "";
+	z-index: -2;
+	background-color: #102770;
+	width: 100%;
+	height: 100%;
+	display: block;
+	top: 0;
+	left: 0;
+}
+.pricing:checked + label:after,
+.pricing:not(:checked) + label:after {
+	position: absolute;
+	content: "";
+	z-index: -1;
+	background-color: #ffeba7;
+	width: 128px;
+	height: 40px;
+	display: block;
+	top: 2px;
+	left: 2px;
+	border-radius: 2px;
+	transition: left 300ms linear;
+}
+.pricing:checked + label:after {
+	left: 130px;
+}
+.block-diff {
+	display: block;
+	mix-blend-mode: difference;
 }
 
 .card-3d-wrap {
@@ -157,11 +108,11 @@ body {
 	transform-style: preserve-3d;
 	transition: transform 700ms 400ms ease-out;
 }
-
-.card-front {
-	width: 25rem;
-	height: 40rem;
-	background-color: rgb(0, 0, 0, 0.8);
+.card-front,
+.card-back {
+	width: 100%;
+	height: 100%;
+	background-color: rgba(255, 255, 255, 1);
 	position: absolute;
 	border-radius: 6px;
 	left: 0;
@@ -173,16 +124,17 @@ body {
 	-o-backface-visibility: hidden;
 	backface-visibility: hidden;
 	box-shadow: 0 12px 35px 0 rgba(16, 39, 112, 0.07);
-	margin-right: 5rem;
 }
-
-.pricing:checked ~ .card-3d-wrap .card-3d-wrapper {
+.card-back {
+	transform: rotateY(180deg);
+}
+.card-3d-wrap .card-3d-wrapper {
 	transform: rotateY(180deg);
 	transition: transform 700ms 400ms ease-out;
 }
-.pricing-wrap {
+.content-wrap {
 	position: relative;
-	padding-top: 310px;
+	padding-top: 160px;
 	width: 100%;
 	display: block;
 	z-index: 1;
@@ -193,7 +145,7 @@ body {
 	-o-backface-visibility: hidden;
 	backface-visibility: hidden;
 }
-.pricing-wrap h4 {
+.content-wrap h2 {
 	position: relative;
 	width: 100%;
 	display: block;
@@ -203,10 +155,10 @@ body {
 	letter-spacing: 3px;
 	font-size: 22px;
 	line-height: 1.7;
-	color: white;
+	color: #102770;
 	transform: translate3d(0, 0, 35px) perspective(100px);
 }
-.pricing-wrap h4:before {
+.content-wrap h2:before {
 	position: absolute;
 	content: "";
 	z-index: -1;
@@ -220,8 +172,8 @@ body {
 	box-shadow: 0 6px 20px 0 rgba(16, 39, 112, 0.3);
 	animation: border-transform 6s linear infinite;
 }
-.card-back .pricing-wrap h4:before {
-	background: linear-gradient(217deg, #0d0501, #0aa5e2);
+.card-back .content-wrap h2:before {
+	background: linear-gradient(217deg, #648946, #a3c984);
 }
 @keyframes border-transform {
 	0%,
@@ -247,7 +199,7 @@ body {
 		border-radius: 46% 54% 50% 50% / 35% 61% 39% 65%;
 	}
 }
-.pricing-wrap h2 {
+.content-wrap h3 {
 	position: relative;
 	width: 100%;
 	display: block;
@@ -257,13 +209,13 @@ body {
 	letter-spacing: 1px;
 	font-size: 36px;
 	line-height: 1.1;
-	color: white;
+	color: #102770;
 	transform: translate3d(0, 0, 30px) perspective(100px);
 }
-.pricing-wrap h2 sup {
+.content-wrap h3 sup {
 	font-size: 20px;
 }
-.pricing-wrap p {
+.content-wrap p {
 	position: relative;
 	width: 100%;
 	display: block;
@@ -273,13 +225,13 @@ body {
 	font-size: 14px;
 	line-height: 1.2;
 	letter-spacing: 1px;
-	color: white;
+	color: #102770;
 	transform: translate3d(0, 0, 30px) perspective(100px);
 }
 .card-back h2,
 .card-back p,
 .card-back h4 {
-	color: white;
+	color: #0c1c00;
 }
 .link {
 	position: relative;
@@ -312,7 +264,7 @@ body {
 	height: auto;
 	display: block;
 }
-.img-7 {
+.img-1 {
 	position: absolute;
 	display: block;
 	left: -160px;
@@ -324,7 +276,7 @@ body {
 	pointer-events: auto;
 	transition: transform 400ms 1200ms ease, opacity 400ms 1200ms ease;
 }
-.pricing:checked ~ .card-3d-wrap .card-3d-wrapper .img-7 {
+.pricing:checked ~ .card-3d-wrap .card-3d-wrapper .img-1 {
 	opacity: 0;
 	transform: translate3d(-50px, 25px, 45px) perspective(100px);
 	pointer-events: none;
@@ -342,25 +294,6 @@ body {
 	width: 100%;
 	transform: translate3d(0, 0, 15px) perspective(100px);
 }
-
-.img-5 {
-	position: absolute;
-	display: block;
-	right: 0;
-	top: 0px;
-	z-index: 1;
-	width: calc(85% + 70px);
-	transform: translate3d(0, 0, 35px) perspective(100px) scale(0.5) rotate(0deg);
-	// opacity: 0;
-	// pointer-events: none;
-	transition: transform 400ms 100ms ease, opacity 200ms 250ms ease;
-}
-// .pricing:checked ~ .card-3d-wrap .card-3d-wrapper .img-5 {
-// 	opacity: 1;
-// 	pointer-events: auto;
-// 	transform: translate3d(0, 0, 35px) perspective(100px) scale(1) rotate(10deg);
-// 	transition: transform 400ms 1300ms ease, opacity 300ms 1300ms ease;
-// }
 .img-3 {
 	position: absolute;
 	display: block;
@@ -401,10 +334,10 @@ body {
 .img-4 {
 	position: absolute;
 	display: block;
-	left: -9px;
-	top: 120px;
+	left: -60px;
+	top: -60px;
 	z-index: 5;
-	width: calc(85% + 70px);
+	width: calc(65% + 60px);
 	transform: translate3d(0, 0, 45px) perspective(100px) scale(0.5);
 	opacity: 0;
 	pointer-events: none;
@@ -422,7 +355,7 @@ body {
 	right: -70px;
 	top: -50px;
 	z-index: 6;
-	width: calc(85% + 70px);
+	width: calc(60% + 70px);
 	transform: translate3d(0, 0, 35px) perspective(100px) scale(0.5) rotate(0deg);
 	opacity: 0;
 	pointer-events: none;
