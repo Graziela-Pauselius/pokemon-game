@@ -7,4 +7,5 @@
 ## Build with
 - JavaScrip
 - React 
+- HTML
 - CSS
