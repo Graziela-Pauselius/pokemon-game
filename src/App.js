@@ -12,7 +12,6 @@ const App = () => {
 			try {
 				const response = await axios.get(`http://localhost:3000/pokemon`);
 				const pokemonData = await response.data.pokemonData;
-				// console.log("data", pokemonData);
 				setPokemon(pokemonData);
 			} catch (error) {
 				console.log(error);

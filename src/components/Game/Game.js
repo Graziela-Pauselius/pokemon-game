@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./Game.scss";
 import Popup from "../PopUp/PopUp";
 import PokemonTitle from "../../img/pokemon.png";
@@ -18,7 +18,6 @@ const PokemonGame = ({ pokemon }) => {
 
 				const pokemonIndex = Math.floor(Math.random() * pokemonData.length);
 				let pokemonSeleted = pokemon[pokemonIndex];
-				console.log(pokemonSeleted);
 				setCurrentPokemon(pokemonSeleted);
 			} catch (error) {
 				console.log(error.message);
